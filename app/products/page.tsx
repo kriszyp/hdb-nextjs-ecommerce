@@ -13,7 +13,8 @@ import { Slider } from "@/components/ui/slider";
 import { ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { listProducts } from "@/app/actions";
 
 // Product type definition
 type Product = {
@@ -25,62 +26,24 @@ type Product = {
   description: string;
 };
 
-// Sample product data
-const products: Product[] = [
-  {
-    id: 1,
-    name: "Premium Leather Backpack",
-    price: 129.99,
-    category: "Accessories",
-    image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&q=80&w=800",
-    description: "Handcrafted leather backpack perfect for daily use",
-  },
-  {
-    id: 2,
-    name: "Wireless Headphones",
-    price: 199.99,
-    category: "Electronics",
-    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=800",
-    description: "Premium wireless headphones with noise cancellation",
-  },
-  {
-    id: 3,
-    name: "Smart Watch",
-    price: 299.99,
-    category: "Electronics",
-    image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&q=80&w=800",
-    description: "Feature-rich smartwatch with health tracking",
-  },
-  {
-    id: 4,
-    name: "Designer Sunglasses",
-    price: 159.99,
-    category: "Accessories",
-    image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&q=80&w=800",
-    description: "Stylish sunglasses with UV protection",
-  },
-  {
-    id: 5,
-    name: "Mechanical Keyboard",
-    price: 149.99,
-    category: "Electronics",
-    image: "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&q=80&w=800",
-    description: "High-performance mechanical gaming keyboard",
-  },
-  {
-    id: 6,
-    name: "Canvas Tote Bag",
-    price: 49.99,
-    category: "Accessories",
-    image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=800",
-    description: "Durable canvas tote for everyday carry",
-  },
-];
-
 export default function ProductsPage() {
+  const [products, setProducts] = useState<Product[]>([]);
   const [category, setCategory] = useState<string>("all");
   const [priceRange, setPriceRange] = useState<number[]>([0, 300]);
   const [sortBy, setSortBy] = useState<string>("featured");
+
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+          const response: Product[] = await listProducts();
+          setProducts(response);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+    };
+    // Call fetchData when the component mounts
+    fetchData();
+  }, []);
 
   // Filter and sort products
   const filteredProducts = products

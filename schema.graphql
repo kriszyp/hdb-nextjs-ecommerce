@@ -1,7 +1,8 @@
-type Categories @table @export {
-    id: ID @primaryKey
-}
-
-type Products @table @export {
-    id: ID @primaryKey
+type Product @table @export {
+  id: ID @primaryKey
+  name: String @indexed
+  category: String @indexed
+  price: Float @indexed
+  image: String @indexed
+  description: String
 }

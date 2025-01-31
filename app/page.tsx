@@ -1,12 +1,12 @@
-'use client';
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ShoppingBag, Star, TrendingUp, Truck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { listProducts } from "@/app/actions";
 
-export default function Home() {
+export default async function Home() {
+  const featuredProducts = await listProducts({ limit: 3 });
   const features = [
     {
       icon: <Truck className="h-6 w-6" />,
@@ -22,27 +22,6 @@ export default function Home() {
       icon: <TrendingUp className="h-6 w-6" />,
       title: "Best Sellers",
       description: "Trending items",
-    },
-  ];
-
-  const featuredProducts = [
-    {
-      id: 1,
-      name: "Premium Leather Backpack",
-      price: 129.99,
-      image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      id: 2,
-      name: "Wireless Headphones",
-      price: 199.99,
-      image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      id: 3,
-      name: "Smart Watch",
-      price: 299.99,
-      image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&q=80&w=800",
     },
   ];
 
@@ -122,22 +101,6 @@ export default function Home() {
             <Link href="/products">
               <Button size="lg">View All Products</Button>
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Section */}
-      <section className="bg-primary py-16 text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="mb-4 text-3xl font-bold">Stay Updated</h2>
-          <p className="mb-8">Subscribe to our newsletter for exclusive offers and updates</p>
-          <div className="mx-auto flex max-w-md flex-col gap-4 sm:flex-row">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 rounded-md border border-gray-300 px-4 py-2 text-black focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-            <Button variant="secondary">Subscribe</Button>
           </div>
         </div>
       </section>
