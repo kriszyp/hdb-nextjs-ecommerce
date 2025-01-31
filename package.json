@@ -6,9 +6,6 @@
     "dev": "harperdb-nextjs dev",
     "build": "harperdb-nextjs build",
     "start": "harperdb-nextjs start",
-    "next-dev": "next dev",
-    "next-build": "next build",
-    "next-start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
