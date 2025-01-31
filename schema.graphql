@@ -1,0 +1,7 @@
+type Categories @table @export {
+    id: ID @primaryKey
+}
+
+type Products @table @export {
+    id: ID @primaryKey
+}
