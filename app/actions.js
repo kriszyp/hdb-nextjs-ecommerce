@@ -10,7 +10,3 @@ export async function listProducts(conditions = {}) {
 	}
 	return products;
 }
-
-export async function getProduct(id) {
-	return tables.Dog.get(id);
-}
