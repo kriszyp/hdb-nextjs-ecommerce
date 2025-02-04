@@ -1,5 +1,5 @@
 'use server';
-import('harperdb');
+import { tables } from 'harperdb';
 const { Product } = tables;
 
 export async function listProducts(conditions = {}) {
