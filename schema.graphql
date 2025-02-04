@@ -1,3 +1,11 @@
+type Specs {
+  Material: String
+  Dimensions: String
+  Weight: String
+  Capacity: String
+  Warranty: String
+}
+
 type Product @table @export {
   id: ID @primaryKey
   name: String @indexed
@@ -5,4 +13,6 @@ type Product @table @export {
   price: Float @indexed
   image: String @indexed
   description: String
+  features: [String]
+  specs: Specs
 }

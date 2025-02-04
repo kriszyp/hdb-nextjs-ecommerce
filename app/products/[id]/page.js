@@ -1,6 +1,6 @@
 import 'harperdb';
 import ProductPage from './product-page';
-import { listProducts } from '@/app/actions';
+import { listProducts, getProduct } from '@/app/actions';
 
 export async function generateStaticParams() {
   const products = await listProducts();
@@ -11,5 +11,11 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }) {
   const { id } = await params;
-  return <ProductPage id={id} />;
+  const product = await getProduct(id);
+  return (
+    <ProductPage
+      id={id}
+      product={JSON.parse(JSON.stringify(product))}
+    />
+  );
 }

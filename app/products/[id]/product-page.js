@@ -6,34 +6,31 @@ import { ShoppingBag, Star, Truck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { products } from "./products-data";
 
-export default function ProductPage({ id }: { id: string }) {
-  const product = products.find((p) => p.id === parseInt(id));
+export default function ProductPage({ id, product }) {
+  // const product = products.find((p) => p.id === parseInt(id));
   
   if (!product) {
     notFound();
   }
 
-  const relatedProducts = products
-    .filter((p) => p.category === product.category && p.id !== product.id)
-    .slice(0, 3);
+  // const relatedProducts = products
+  //   .filter((p) => p.category === product.category && p.id !== product.id)
+  //   .slice(0, 3);
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="grid gap-8 lg:grid-cols-2">
         {/* Image Gallery */}
         <div className="space-y-4">
-          {product.images.map((image, index) => (
-            <div key={index} className="relative aspect-square overflow-hidden rounded-lg">
-              <Image
-                src={image}
-                alt={`${product.name} - Image ${index + 1}`}
-                fill
-                className="object-cover"
-              />
-            </div>
-          ))}
+          <div className="relative aspect-square overflow-hidden rounded-lg">
+            <Image
+              src={product.image}
+              alt={`${product.name} - Image`}
+              fill
+              className="object-cover"
+            />
+          </div>
         </div>
 
         {/* Product Info */}
@@ -91,7 +88,7 @@ export default function ProductPage({ id }: { id: string }) {
       <div className="mt-16">
         <h2 className="mb-8 text-2xl font-bold">Related Products</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {relatedProducts.map((relatedProduct) => (
+          {/* {relatedProducts.map((relatedProduct) => (
             <Link key={relatedProduct.id} href={`/products/${relatedProduct.id}`}>
               <Card className="overflow-hidden transition-transform hover:scale-[1.02]">
                 <div className="relative h-64">
@@ -111,7 +108,7 @@ export default function ProductPage({ id }: { id: string }) {
                 </CardContent>
               </Card>
             </Link>
-          ))}
+          ))} */}
         </div>
       </div>
     </div>
