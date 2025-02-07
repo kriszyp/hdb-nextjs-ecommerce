@@ -7,10 +7,10 @@ import { ShoppingBag, Star, Truck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAiRecommendations } from '@/app/actions';
+import { getAiRecommendations, getAi } from '@/app/actions';
 
 // Typically this data would come from a tool like Segment, etc
-const USER_TRAITS = ['sporty'];
+const USER_TRAITS = ['leather'];
 
 export default function ProductPage({ id, product }) {
   if (!product) notFound();
@@ -19,9 +19,12 @@ export default function ProductPage({ id, product }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getAiRecommendations(USER_TRAITS, product.category);
-        console.log('related Products in client component ', response);
-        setRelatedProducts(response);
+        // const response = await getAiRecommendations(USER_TRAITS, product.category);
+        // console.log('related Products in client component ', response);
+        // setRelatedProducts(response);
+
+        const resTwo = await getAi(USER_TRAITS, product.category);
+        console.log('resTwo ', resTwo);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -30,7 +33,7 @@ export default function ProductPage({ id, product }) {
     fetchData();
   }, []);
 
-  console.log('relatedProducts! ', relatedProducts);
+  // console.log('relatedProducts! ', relatedProducts);
 
   return (
     <div className="container mx-auto px-4 py-8">
