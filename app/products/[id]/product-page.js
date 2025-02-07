@@ -20,7 +20,7 @@ export default function ProductPage({ id, product }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getAiRecommendations(USER_TRAITS, product.category);
+        const response = await getAiRecommendations(USER_TRAITS, product.category, product.id);
         setRelatedProducts(JSON.parse(response).recommendations);
         setReady(true);
       } catch (error) {

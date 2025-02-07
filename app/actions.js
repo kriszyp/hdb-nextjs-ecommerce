@@ -55,20 +55,23 @@ const openai = new OpenAI({
 	project: process.env.OPENAI_PROJECT_ID,
 });
 
-export async function getAiRecommendations(userTraits = [], category) {
+export async function getAiRecommendations(userTraits = [], category, currentId) {
   if (!Array.isArray(userTraits) || !userTraits.length) {
 		// If no user trait data, query 3 'default' products in similar category
 		// saves an AI API call and prevents needless server resource usage
 		return await listProducts({
 			conditions: [
 				{ attribute: 'category', value: category, comparator: 'equals' },
+				{ attribute: 'id', value: currentId, comparator: 'not_equal' }
 			],
 			limit: 3
 		});
   }
 
   // Actually perform the product recommendation using OpenAI
-	return await listProducts()
+	return await listProducts({
+		conditions: [{ attribute: 'id', value: currentId, comparator: 'not_equal' }]
+	})
 		.then(async data => {
 			const response = await openai.chat.completions.create({
 				model: "gpt-4o",
