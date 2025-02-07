@@ -1,22 +1,35 @@
 'use client';
 
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ShoppingBag, Star, Truck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getAiRecommendations } from '@/app/actions';
+
+// Typically this data would come from a tool like Segment, etc
+const USER_TRAITS = ['audio'];
 
 export default function ProductPage({ id, product }) {
-  // const product = products.find((p) => p.id === parseInt(id));
-  
-  if (!product) {
-    notFound();
-  }
+  if (!product) notFound();
+  const [ready, setReady] = useState(false);
+  const [relatedProducts, setRelatedProducts] = useState([]);
 
-  // const relatedProducts = products
-  //   .filter((p) => p.category === product.category && p.id !== product.id)
-  //   .slice(0, 3);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getAiRecommendations(USER_TRAITS, product.category, product.id);
+        setRelatedProducts(JSON.parse(response).recommendations);
+        setReady(true);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    // Call fetchData when the component mounts
+    fetchData();
+  }, []);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -88,12 +101,12 @@ export default function ProductPage({ id, product }) {
       <div className="mt-16">
         <h2 className="mb-8 text-2xl font-bold">Related Products</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {/* {relatedProducts.map((relatedProduct) => (
+          {(!ready || !relatedProducts) ? 'Loading...' : relatedProducts.map((relatedProduct) => (
             <Link key={relatedProduct.id} href={`/products/${relatedProduct.id}`}>
               <Card className="overflow-hidden transition-transform hover:scale-[1.02]">
                 <div className="relative h-64">
                   <Image
-                    src={relatedProduct.images[0]}
+                    src={relatedProduct.image}
                     alt={relatedProduct.name}
                     fill
                     className="object-cover"
@@ -108,7 +121,7 @@ export default function ProductPage({ id, product }) {
                 </CardContent>
               </Card>
             </Link>
-          ))} */}
+          ))}
         </div>
       </div>
     </div>
