@@ -1,22 +1,36 @@
 'use client';
 
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ShoppingBag, Star, Truck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getAiRecommendations } from '@/app/actions';
+
+// Typically this data would come from a tool like Segment, etc
+const USER_TRAITS = ['sporty'];
 
 export default function ProductPage({ id, product }) {
-  // const product = products.find((p) => p.id === parseInt(id));
-  
-  if (!product) {
-    notFound();
-  }
+  if (!product) notFound();
+  const [relatedProducts, setRelatedProducts] = useState([]);
 
-  // const relatedProducts = products
-  //   .filter((p) => p.category === product.category && p.id !== product.id)
-  //   .slice(0, 3);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getAiRecommendations(USER_TRAITS, product.category);
+        console.log('related Products in client component ', response);
+        setRelatedProducts(response);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    // Call fetchData when the component mounts
+    fetchData();
+  }, []);
+
+  console.log('relatedProducts! ', relatedProducts);
 
   return (
     <div className="container mx-auto px-4 py-8">
