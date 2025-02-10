@@ -15,60 +15,26 @@ export async function getProduct(id) {
 	return tables.Product.get(id);
 }
 
-
-// Server-side AI example
-// import PipelineSingleton from '@/app/pipeline.js';
-
-// export async function getAi_OLD(userTraits = [], category) {
-//   if (!Array.isArray(userTraits) || !userTraits.length) {
-// 		// If no user trait data, query 3 'default' products in similar category
-// 		// saves an AI API call and prevents needless server resource usage
-// 		return await listProducts({
-// 			conditions: [
-// 				{ attribute: 'category', value: category, comparator: 'equals' },
-// 			],
-// 			limit: 3
-// 		});
-//   }
-
-//   // Get the question-answer pipeline. When called for the first time,
-//   // this will load the pipeline and cache it for future use.
-//   const answerer = await PipelineSingleton.getInstance();
-
-//   // Actually perform the product recommendation
-// 	return await listProducts()
-// 		.then(data => {
-// 			const question =
-// 				`What are three good product IDs for someone who has the following traits: ${userTraits.join(', ')}`;
-// 			const context = `Good products for the ${userTraits.join(', ')} can be pulled from this list of product data: ${data}, and good products have similar names, descriptions, and features to the ${userTraits} please return the product ids of the selected products.`;
-
-// 			return answerer(question, context)
-// 				.then(res => res.answer);
-// 		});
-// }
-
-// -------
+// OpenAI Server Actions
 import OpenAI from "openai";
-
 const openai = new OpenAI({
 	apiKey: process.env.OPENAI_API_KEY,
 	project: process.env.OPENAI_PROJECT_ID,
 });
 
-export async function getAiRecommendations(userTraits = [], category, currentId) {
-  if (!Array.isArray(userTraits) || !userTraits.length) {
-		// If no user trait data, query 3 'default' products in similar category
-		// saves an AI API call and prevents needless server resource usage
-		return await listProducts({
-			conditions: [
-				{ attribute: 'category', value: category, comparator: 'equals' },
-				{ attribute: 'id', value: currentId, comparator: 'not_equal' }
-			],
-			limit: 3
-		});
-  }
+export async function customizeProductDescription(userTraits = [], productDescription) {
+	const prompt = `Given that a person has the following traits: ${userTraits.join(', ')} 
+		can you rewrite the following product description passage for someone like this: ${productDescription} without using exclamation points?
+		Only return the product description, no other text.
+	`;
+  const response = await openai.chat.completions.create({
+    messages: [{ role: 'user', content: prompt }],
+    model: 'gpt-4o',
+  });
+	return response.choices[0].message.content;
+}
 
-  // Actually perform the product recommendation using OpenAI
+export async function getAiRecommendations(userTraits = [], category, currentId) {
 	return await listProducts({
 		conditions: [{ attribute: 'id', value: currentId, comparator: 'not_equal' }]
 	})
