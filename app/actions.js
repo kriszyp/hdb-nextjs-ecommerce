@@ -26,10 +26,11 @@ export async function customizeProductDescription(userTraits = [], productDescri
 	const prompt = `Given that a person has the following traits: ${userTraits.join(', ')} 
 		can you rewrite the following product description passage for someone like this: ${productDescription} without using exclamation points?
 		Only return the product description, no other text.
+		Keep the description to a 300 character length maximum.
 	`;
   const response = await openai.chat.completions.create({
     messages: [{ role: 'user', content: prompt }],
-    model: 'gpt-4o',
+    model: 'gpt-4o-mini',
   });
 	return response.choices[0].message.content;
 }
@@ -40,7 +41,7 @@ export async function getAiRecommendations(userTraits = [], category, currentId)
 	})
 		.then(async data => {
 			const response = await openai.chat.completions.create({
-				model: "gpt-4o",
+				model: "gpt-4o-mini",
 				messages: [
 					{
 						"role": "developer",
