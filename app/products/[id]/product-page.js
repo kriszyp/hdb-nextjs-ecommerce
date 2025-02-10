@@ -7,29 +7,75 @@ import { ShoppingBag, Star, Truck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAiRecommendations } from '@/app/actions';
+import { listProducts, getAiRecommendations, customizeProductDescription } from '@/app/actions';
 
 // Typically this data would come from a tool like Segment, etc
-const USER_TRAITS = ['audio'];
+const USER_TRAITS = ['sporty', 'likes computers', 'woman', 'lives near a ski resort'];
 
 export default function ProductPage({ id, product }) {
   if (!product) notFound();
-  const [ready, setReady] = useState(false);
+  const [productDescReady, setProductDescReady] = useState(null);
+  const [recommendationsReady, setRecommendationsReady] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
+  const [customDescription, setCustomDescription] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await getAiRecommendations(USER_TRAITS, product.category, product.id);
-        setRelatedProducts(JSON.parse(response).recommendations);
-        setReady(true);
-      } catch (error) {
-        console.error('Error fetching data:', error);
+      if (Array.isArray(USER_TRAITS) && USER_TRAITS.length) {
+        try {
+          setProductDescReady(false);
+          setRecommendationsReady(false);
+
+          // Get AI generated customized product description
+          const customDescription = await customizeProductDescription(USER_TRAITS, product.description);
+          setCustomDescription(customDescription);
+          setProductDescReady(true);
+
+          // Get AI generated customized product recommendations
+          const customRecommendations = await getAiRecommendations(USER_TRAITS, product.category, product.id);
+          setRelatedProducts(JSON.parse(customRecommendations).recommendations);
+          setRecommendationsReady(true);
+        } catch (err) {
+          console.error('Error fetching data:', err);
+        }
+      } else {
+        try {
+          // If no custom user traits:
+          // Save 2 openai API calls & list products in the same category by default
+          setProductDescReady(true);
+          setRecommendationsReady(false);
+          const defaultRecommendation = await listProducts({
+            conditions: [
+              { attribute: 'category', value: product.category, comparator: 'equals' },
+              { attribute: 'id', value: id, comparator: 'not_equal' }
+            ],
+            limit: 3
+          });
+          setRelatedProducts(defaultRecommendation);
+          setReady(true);          
+        } catch (err) {
+          console.error('Error fetching data:', err);
+        }
       }
     };
     // Call fetchData when the component mounts
     fetchData();
   }, []);
+
+  function renderProductDescription() {
+    // No customer traits
+    if (!Array.isArray(USER_TRAITS) && !USER_TRAITS.length) {
+      return product.description;
+    }
+
+    // Wait for custom product description to load
+    if (!customDescription && productDescReady === false) {
+      return 'Description loading...';
+    }
+    if (customDescription && productDescReady) {
+      return customDescription;
+    }
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -54,7 +100,7 @@ export default function ProductPage({ id, product }) {
           </div>
 
           <div className="space-y-4">
-            <p className="text-muted-foreground">{product.description}</p>
+            <p className="text-muted-foreground" style={{ minHeight: 100 }}>{renderProductDescription()}</p>
 
             <div className="flex items-center space-x-4">
               <Button size="lg" className="flex-1">
@@ -101,7 +147,7 @@ export default function ProductPage({ id, product }) {
       <div className="mt-16">
         <h2 className="mb-8 text-2xl font-bold">Related Products</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {(!ready || !relatedProducts) ? 'Loading...' : relatedProducts.map((relatedProduct) => (
+          {(!recommendationsReady || !relatedProducts) ? 'Loading...' : relatedProducts.map((relatedProduct) => (
             <Link key={relatedProduct.id} href={`/products/${relatedProduct.id}`}>
               <Card className="overflow-hidden transition-transform hover:scale-[1.02]">
                 <div className="relative h-64">
