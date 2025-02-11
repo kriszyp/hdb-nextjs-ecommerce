@@ -2,6 +2,7 @@
 import { tables } from 'harperdb';
 const { Product } = tables;
 
+// Harper DB Server Actions
 export async function listProducts(conditions = {}) {
 	const products = [];
   const results = Product.search(conditions);
@@ -13,6 +14,21 @@ export async function listProducts(conditions = {}) {
 
 export async function getProduct(id) {
 	return tables.Product.get(id);
+}
+
+// Algolia Search Server Actions
+import { algoliasearch } from 'algoliasearch';
+const algoliaClient = algoliasearch(
+	process.env.ALGOLIA_APP_ID,
+	process.env.ALGOLIA_API_KEY,
+);
+export async function searchProducts(text = ''){
+	return await algoliaClient.searchSingleIndex({
+			indexName: 'productdata',
+			searchParams: {
+				query: text,
+			}
+		});
 }
 
 // OpenAI Server Actions

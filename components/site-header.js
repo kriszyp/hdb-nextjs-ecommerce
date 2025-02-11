@@ -1,14 +1,22 @@
 'use client';
 
+import { useState } from "react";
 import { ShoppingBag, Search } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuPortal, DropdownMenuContent } from "./ui/dropdown-menu";
 import { Input } from "./ui/input";
+import { searchProducts } from '../app/actions';
 
 export function SiteHeader() {
-  function search(e: React.ChangeEvent<HTMLInputElement>) {
-    console.log('Algolia will search: ', e.target.value);
+  const [searchResults, setSearchResults] = useState([]);
+
+  function search(e) {
+    // TODO: could debounce for optimization
+    searchProducts(e.target.value)
+      .then(res => {
+        setSearchResults(res.hits);
+      });
   }
   
   return (
@@ -38,7 +46,18 @@ export function SiteHeader() {
                   <Input type="text" onChange={search} />
                 </div>
                 <div style={{ paddingTop: 10, paddingBottom: 10 }}>
-                  TODO: Algolia search results here
+                  {searchProducts && searchResults.map(res => (
+                    <Link key={`product-${res.id}`} href={`/products/${res.id}`}>
+                      <div style={{ paddingTop: 5, paddingBottom: 5 }}>
+                        <div>
+                          {res.name}
+                        </div>
+                        <div style={{ color: 'gray', fontSize: 12 }}>
+                          {res.description}
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
                 </div>
               </DropdownMenuContent>
             </DropdownMenuPortal>
