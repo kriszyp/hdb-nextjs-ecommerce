@@ -21,7 +21,8 @@ export async function getUserTraits(id = "1") {
 }
 
 export async function updateUserTraits(id = "1", traits) {
-	return tables.Traits.put({ id, traits });
+	await tables.Traits.put({ id, traits });
+	return 'successfully updated Traits table';
 }
 
 // Algolia Search Server Actions
