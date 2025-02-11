@@ -7,10 +7,12 @@ import { ShoppingBag, Star, Truck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { listProducts, getAiRecommendations, customizeProductDescription } from '@/app/actions';
-
-// Typically this data would come from a tool like Segment, etc
-const USER_TRAITS = ['sporty', 'likes computers', 'woman', 'lives near a ski resort'];
+import {
+  listProducts,
+  getAiRecommendations,
+  customizeProductDescription,
+  getUserTraits,
+} from '@/app/actions';
 
 export default function ProductPage({ id, product }) {
   if (!product) notFound();
@@ -18,23 +20,27 @@ export default function ProductPage({ id, product }) {
   const [recommendationsReady, setRecommendationsReady] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [customDescription, setCustomDescription] = useState(null);
+  const [traits, setTraits] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      if (Array.isArray(USER_TRAITS) && USER_TRAITS.length) {
+      const traits = await getUserTraits() || [];
+      setTraits(traits);
+
+      if (Array.isArray(traits) && traits.length) {
         try {
           setProductDescReady(false);
           setRecommendationsReady(false);
 
           // Get AI generated customized product description
-          const customDescription = await customizeProductDescription(USER_TRAITS, product.description);
+          const customDescription = await customizeProductDescription(traits, product.description);
           setCustomDescription(customDescription);
           setProductDescReady(true);
 
           // Get AI generated customized product recommendations
-          const customRecommendations = await getAiRecommendations(USER_TRAITS, product.category, product.id);
-          setRelatedProducts(JSON.parse(customRecommendations).recommendations);
-          setRecommendationsReady(true);
+          // const customRecommendations = await getAiRecommendations(traits, product.category, product.id);
+          // setRelatedProducts(JSON.parse(customRecommendations).recommendations);
+          // setRecommendationsReady(true);
         } catch (err) {
           console.error('Error fetching data:', err);
         }
@@ -58,13 +64,14 @@ export default function ProductPage({ id, product }) {
         }
       }
     };
+
     // Call fetchData when the component mounts
     fetchData();
   }, []);
 
   function renderProductDescription() {
     // No customer traits
-    if (!Array.isArray(USER_TRAITS) && !USER_TRAITS.length) {
+    if (!traits || !Array.isArray(traits) || !traits.length) {
       return product.description;
     }
 

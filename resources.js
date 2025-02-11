@@ -8,5 +8,6 @@ for (const product of productdata) {
 }
 
 // trait table seed data
+// Typically this data would come from a tool like Segment, Optimizely, etc
 const USER_TRAITS = ['sporty', 'likes computers', 'lives near a ski resort'];
 Traits.put({ id: "1", traits: USER_TRAITS});
