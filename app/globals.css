@@ -80,3 +80,22 @@
     @apply bg-background text-foreground;
   }
 }
+
+.control-panel {
+  cursor: pointer;
+  background-color: #404040;
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  display: grid;
+  align-items: center;
+  width: 100px;
+  height: 30px;
+  border-radius: 16px;
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  &:hover {
+    background-color: #262626;
+  }
+}

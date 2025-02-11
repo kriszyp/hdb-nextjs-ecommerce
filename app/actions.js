@@ -18,16 +18,16 @@ export async function getProduct(id) {
 
 // Algolia Search Server Actions
 import { algoliasearch } from 'algoliasearch';
+
 const algoliaClient = algoliasearch(
 	process.env.ALGOLIA_APP_ID,
 	process.env.ALGOLIA_API_KEY,
 );
-export async function searchProducts(text = ''){
+
+export async function searchProducts(searchTerm = ''){
 	return await algoliaClient.searchSingleIndex({
 			indexName: 'productdata',
-			searchParams: {
-				query: text,
-			}
+			searchParams: { query: searchTerm },
 		});
 }
 

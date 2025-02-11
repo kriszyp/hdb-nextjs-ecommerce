@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { SiteHeader } from '@/components/site-header';
+import { ControlPanel } from '@/components/control-panel';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <SiteHeader />
         {children}
+        <ControlPanel />
       </body>
     </html>
   );
