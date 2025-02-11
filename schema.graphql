@@ -16,3 +16,8 @@ type Product @table @export {
   features: [String]
   specs: Specs
 }
+
+type Traits @table @export {
+  id: ID @primaryKey
+  traits: [String]
+}

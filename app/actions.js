@@ -16,6 +16,10 @@ export async function getProduct(id) {
 	return tables.Product.get(id);
 }
 
+export async function getUserTraits(id = "1") {
+	return tables.Traits.get(id).traits;
+}
+
 // Algolia Search Server Actions
 import { algoliasearch } from 'algoliasearch';
 
