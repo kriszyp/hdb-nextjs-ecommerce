@@ -20,6 +20,10 @@ export async function getUserTraits(id = "1") {
 	return tables.Traits.get(id).traits;
 }
 
+export async function updateUserTraits(id = "1", traits) {
+	return tables.Traits.put({ id, traits });
+}
+
 // Algolia Search Server Actions
 import { algoliasearch } from 'algoliasearch';
 
