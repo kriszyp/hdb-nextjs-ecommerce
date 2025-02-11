@@ -75,26 +75,28 @@ export default async function Home() {
           <h2 className="mb-8 text-center text-3xl font-bold">Featured Products</h2>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {featuredProducts.map((product) => (
-              <Card key={product.id} className="overflow-hidden">
-                <div className="relative h-64">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <CardContent className="p-4">
-                  <h3 className="mb-2 text-lg font-semibold">{product.name}</h3>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xl font-bold">${product.price}</span>
-                    <Button size="sm">
-                      <ShoppingBag className="mr-2 h-4 w-4" />
-                      Add to Cart
-                    </Button>
+              <Link key={product.id} href={`/products/${product.id}`}>              
+                <Card key={product.id} className="overflow-hidden">
+                  <div className="relative h-64">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-4">
+                    <h3 className="mb-2 text-lg font-semibold">{product.name}</h3>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xl font-bold">${product.price}</span>
+                      <Button size="sm">
+                        {/* <ShoppingBag className="mr-2 h-4 w-4" /> */}
+                        View Details
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
           <div className="mt-8 text-center">
