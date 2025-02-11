@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import {
   Dialog,
   DialogTrigger,
@@ -6,6 +8,7 @@ import {
   DialogTitle,
   DialogClose,
 } from './ui/dialog';
+import harper_logo from './harper_logo.png'
 // import { Input } from "./ui/input";
 // const TRAITS = [];
 
@@ -14,7 +17,12 @@ export function ControlPanel() {
     <Dialog>
       <DialogTrigger>
         <div className="control-panel">
-          control panel
+          <Image
+            className="control-panel-img"
+            src={harper_logo}
+            alt='harper logo'
+          />
+          Admin
         </div>
       </DialogTrigger>
       <DialogPortal>
