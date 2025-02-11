@@ -63,7 +63,6 @@ export function SiteHeader() {
             </DropdownMenuPortal>
           </DropdownMenu>
           
-          
           <Button size="icon" variant="ghost">
             <ShoppingBag className="h-5 w-5" />
           </Button>

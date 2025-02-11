@@ -24,12 +24,12 @@ export default function ProductsPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-        try {
-          const response = await listProducts();
-          setProducts(response);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
+      try {
+        const response = await listProducts();
+        setProducts(response);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     };
     // Call fetchData when the component mounts
     fetchData();

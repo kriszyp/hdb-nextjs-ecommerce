@@ -16,18 +16,27 @@ export async function getProduct(id) {
 	return tables.Product.get(id);
 }
 
+export async function getUserTraits(id = "1") {
+	return tables.Traits.get(id).traits;
+}
+
+export async function updateUserTraits(id = "1", traits) {
+	await tables.Traits.put({ id, traits });
+	return 'successfully updated Traits table';
+}
+
 // Algolia Search Server Actions
 import { algoliasearch } from 'algoliasearch';
+
 const algoliaClient = algoliasearch(
 	process.env.ALGOLIA_APP_ID,
 	process.env.ALGOLIA_API_KEY,
 );
-export async function searchProducts(text = ''){
+
+export async function searchProducts(searchTerm = ''){
 	return await algoliaClient.searchSingleIndex({
 			indexName: 'productdata',
-			searchParams: {
-				query: text,
-			}
+			searchParams: { query: searchTerm },
 		});
 }
 
