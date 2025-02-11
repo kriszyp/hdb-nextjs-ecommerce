@@ -9,7 +9,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   listProducts,
-  getAiRecommendations,
   customizeProductDescription,
   getUserTraits,
 } from '@/app/actions';
@@ -24,44 +23,39 @@ export default function ProductPage({ id, product }) {
 
   useEffect(() => {
     const fetchData = async () => {
+      // check for custom user traits
       const traits = await getUserTraits() || [];
       setTraits(traits);
 
+      // If there are custom user traits, get AI recommended product description
       if (Array.isArray(traits) && traits.length) {
         try {
           setProductDescReady(false);
-          setRecommendationsReady(false);
 
           // Get AI generated customized product description
           const customDescription = await customizeProductDescription(traits, product.description);
           setCustomDescription(customDescription);
           setProductDescReady(true);
 
-          // Get AI generated customized product recommendations
-          // const customRecommendations = await getAiRecommendations(traits, product.category, product.id);
-          // setRelatedProducts(JSON.parse(customRecommendations).recommendations);
-          // setRecommendationsReady(true);
         } catch (err) {
           console.error('Error fetching data:', err);
         }
-      } else {
-        try {
-          // If no custom user traits:
-          // Save 2 openai API calls & list products in the same category by default
-          setProductDescReady(true);
-          setRecommendationsReady(false);
-          const defaultRecommendation = await listProducts({
-            conditions: [
-              { attribute: 'category', value: product.category, comparator: 'equals' },
-              { attribute: 'id', value: id, comparator: 'not_equal' }
-            ],
-            limit: 3
-          });
-          setRelatedProducts(defaultRecommendation);
-          setReady(true);          
-        } catch (err) {
-          console.error('Error fetching data:', err);
-        }
+      }
+
+      // Get default product recommendation
+      try {
+        setRecommendationsReady(false);
+        const defaultRecommendation = await listProducts({
+          conditions: [
+            { attribute: 'category', value: product.category, comparator: 'equals' },
+            { attribute: 'id', value: id, comparator: 'not_equal' }
+          ],
+          limit: 3
+        });
+        setRelatedProducts(defaultRecommendation);
+        setRecommendationsReady(true);
+      } catch (err) {
+        console.error('Error fetching data:', err);
       }
     };
 
