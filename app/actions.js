@@ -35,7 +35,7 @@ const algoliaClient = algoliasearch(
 
 export async function searchProducts(searchTerm = ''){
 	return await algoliaClient.searchSingleIndex({
-			indexName: 'productdata',
+			indexName: 'moviedata',
 			searchParams: { query: searchTerm },
 		});
 }
