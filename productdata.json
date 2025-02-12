@@ -5,7 +5,7 @@
     "category": "Comedy",
     "price": 11.99,
     "image": "https://m.media-amazon.com/images/M/MV5BYWY3MDE2Y2UtOTE3Zi00MGUzLTg2MTItZjE1ZWVkMGVlODRmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
-    "description": "A sequel that features Riley entering puberty and experiencing brand new, more complex emotions as a result. As Riley tries to adapt to her teenage years, her old emotions try to adapt to the possibility of being replaced.",
+    "description": "A sequel that features Riley entering puberty and experiencing brand new, more complex emotions as a result.",
     "features": [
       "Computer Animation",
       "Coming-of-Age",
@@ -19,6 +19,490 @@
       "Director": "Kelsey Mann",
       "Stars": "Amy Poehler, Maya Hawke, Kensington Tallman",
       "IMDB Rating": "7.5/10"
+    }
+  },
+  {
+    "id": "2",
+    "name": "Dune: Part Two",
+    "category": "Science Fiction",
+    "price": 14.99,
+    "image": "https://m.media-amazon.com/images/M/MV5BNTc0YmQxMjEtODI5MC00NjFiLTlkMWUtOGQ5NjFmYWUyZGJhXkEyXkFqcGc@._V1_.jpg",
+    "description": "The continuation of Paul Atreides' journey as he unites with Chani and the Fremen while seeking revenge against those who destroyed his family.",
+    "features": [
+      "Epic",
+      "Space Opera",
+      "Adaptation",
+      "Action"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG-13",
+      "Length": "2h 45m",
+      "Director": "Denis Villeneuve",
+      "Stars": "Timothée Chalamet, Zendaya, Rebecca Ferguson",
+      "IMDB Rating": "8.3/10"
+    }
+  },
+  {
+    "id": "3",
+    "name": "The Marvels",
+    "category": "Superhero",
+    "price": 12.99,
+    "image": "https://m.media-amazon.com/images/M/MV5BYzczOWM4MzItMWMyOS00ZDczLWIxMzctNzBmYTgzOTI1MzI3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "Captain Marvel, Ms. Marvel, and Monica Rambeau team up to face a new cosmic threat.",
+    "features": [
+      "Superhero Team-Up",
+      "Action",
+      "Marvel Cinematic Universe",
+      "Female Protagonists"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG-13",
+      "Length": "2h 3m",
+      "Director": "Nia DaCosta",
+      "Stars": "Brie Larson, Teyonah Parris, Iman Vellani",
+      "IMDB Rating": "6.8/10"
+    }
+  },
+  {
+    "id": "4",
+    "name": "Barbie",
+    "category": "Comedy",
+    "price": 10.99,
+    "image": "https://m.media-amazon.com/images/M/MV5BYjI3NDU0ZGYtYjA2YS00Y2RlLTgwZDAtYTE2YTM5ZjE1M2JlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "Barbie embarks on a journey of self-discovery in the real world after being cast out of Barbie Land.",
+    "features": [
+      "Fantasy",
+      "Adventure",
+      "Female Lead",
+      "Satire"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG-13",
+      "Length": "1h 54m",
+      "Director": "Greta Gerwig",
+      "Stars": "Margot Robbie, Ryan Gosling, America Ferrera",
+      "IMDB Rating": "7.2/10"
+    }
+  },
+  {
+    "id": "5",
+    "name": "Oppenheimer",
+    "category": "Historical Drama",
+    "price": 14.99,
+    "image": "https://m.media-amazon.com/images/M/MV5BN2JkMDc5MGQtZjg3YS00NmFiLWIyZmQtZTJmNTM5MjVmYTQ4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "A biography of J. Robert Oppenheimer, the scientist behind the Manhattan Project.",
+    "features": [
+      "Biographical",
+      "Thriller",
+      "Science",
+      "Historical"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "R",
+      "Length": "3h 0m",
+      "Director": "Christopher Nolan",
+      "Stars": "Cillian Murphy, Emily Blunt, Matt Damon",
+      "IMDB Rating": "9.0/10"
+    }
+  },
+  {
+    "id": "6",
+    "name": "Mission: Impossible – Dead Reckoning Part One",
+    "category": "Action",
+    "price": 12.49,
+    "image": "https://m.media-amazon.com/images/M/MV5BN2U4OTdmM2QtZTkxYy00ZmQyLTg2N2UtMDdmMGJmNDhlZDU1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "Ethan Hunt and his IMF team must track down a dangerous new weapon that threatens all of humanity.",
+    "features": [
+      "Spy Thriller",
+      "Stunts",
+      "International Locations",
+      "Action"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG-13",
+      "Length": "2h 43m",
+      "Director": "Christopher McQuarrie",
+      "Stars": "Tom Cruise, Rebecca Ferguson, Hayley Atwell",
+      "IMDB Rating": "8.2/10"
+    }
+  },
+  {
+    "id": "7",
+    "name": "Guardians of the Galaxy Vol. 3",
+    "category": "Superhero",
+    "price": 13.99,
+    "image": "https://m.media-amazon.com/images/M/MV5BOTJhOTMxMmItZmE0Ny00MDc3LWEzOGEtOGFkMzY4MWYyZDQ0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "The Guardians embark on one final mission to save one of their own.",
+    "features": [
+      "Superhero Team",
+      "Space Adventure",
+      "Action",
+      "Comedy"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG-13",
+      "Length": "2h 30m",
+      "Director": "James Gunn",
+      "Stars": "Chris Pratt, Zoe Saldana, Dave Bautista",
+      "IMDB Rating": "8.0/10"
+    }
+  },
+  {
+    "id": "8",
+    "name": "Spider-Man: Across the Spider-Verse",
+    "category": "Animation",
+    "price": 14.49,
+    "image": "https://m.media-amazon.com/images/M/MV5BNThiZjA3MjItZGY5Ni00ZmJhLWEwN2EtOTBlYTA4Y2E0M2ZmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "Miles Morales embarks on a multiverse-spanning adventure that pits him against Spider-People from other dimensions.",
+    "features": [
+      "Multiverse",
+      "Animation",
+      "Superhero",
+      "Action"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG",
+      "Length": "2h 20m",
+      "Director": "Joaquim Dos Santos, Kemp Powers",
+      "Stars": "Shameik Moore, Hailee Steinfeld, Oscar Isaac",
+      "IMDB Rating": "9.1/10"
+    }
+  },
+  {
+    "id": "9",
+    "name": "Indiana Jones and the Dial of Destiny",
+    "category": "Action",
+    "price": 12.99,
+    "image": "https://m.media-amazon.com/images/M/MV5BYWJlOWE2ZjEtZGRhOC00M2YzLWFkZGEtYzIzZWI2Zjg3NWYxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "Indiana Jones returns for one last adventure, racing against time to retrieve a mysterious artifact that holds the key to an ancient power.",
+    "features": [
+      "Action",
+      "Adventure",
+      "Historical",
+      "Epic"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG-13",
+      "Length": "2h 34m",
+      "Director": "James Mangold",
+      "Stars": "Harrison Ford, Phoebe Waller-Bridge, Mads Mikkelsen",
+      "IMDB Rating": "7.1/10"
+    }
+  },
+  {
+    "id": "10",
+    "name": "The Flash",
+    "category": "Superhero",
+    "price": 11.49,
+    "image": "https://m.media-amazon.com/images/M/MV5BYmE2NzBjNGUtNTJiMy00N2UxLWEyYzMtYzFjODFhMGZlOTgzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "Barry Allen uses his super speed to alter the past and change the fate of his family, but his actions have unintended consequences across the multiverse.",
+    "features": [
+      "Time Travel",
+      "Superhero",
+      "Action",
+      "Multiverse"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG-13",
+      "Length": "2h 24m",
+      "Director": "Andy Muschietti",
+      "Stars": "Ezra Miller, Michael Keaton, Sasha Calle",
+      "IMDB Rating": "6.7/10"
+    }
+  },
+  {
+    "id": "11",
+    "name": "Elemental",
+    "category": "Animation",
+    "price": 10.99,
+    "image": "https://m.media-amazon.com/images/M/MV5BNjU2MjE1OGItZjdmYS00ZmIyLTljNjYtOWI5ZGRkZjM4NDEwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "In a city where fire, water, land, and air residents coexist, a fiery young woman and a go-with-the-flow guy form an unlikely friendship.",
+    "features": [
+      "Fantasy",
+      "Animation",
+      "Family",
+      "Comedy"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG",
+      "Length": "1h 43m",
+      "Director": "Peter Sohn",
+      "Stars": "Leah Lewis, Mamoudou Athie, Ronnie del Carmen",
+      "IMDB Rating": "7.0/10"
+    }
+  },
+  {
+    "id": "12",
+    "name": "John Wick: Chapter 4",
+    "category": "Action",
+    "price": 13.49,
+    "image": "https://m.media-amazon.com/images/M/MV5BNWIyYmRhODgtOTkxNy00OGQ2LTk3M2MtYTQ0MDQwYWVjMmQ4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "John Wick faces his deadliest foes yet as he uncovers a path to defeating the High Table.",
+    "features": [
+      "Gun-Fu",
+      "Action",
+      "Martial Arts",
+      "Assassins"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "R",
+      "Length": "2h 49m",
+      "Director": "Chad Stahelski",
+      "Stars": "Keanu Reeves, Donnie Yen, Bill Skarsgård",
+      "IMDB Rating": "8.5/10"
+    }
+  },
+  {
+    "id": "13",
+    "name": "The Super Mario Bros. Movie",
+    "category": "Animation",
+    "price": 9.99,
+    "image": "https://m.media-amazon.com/images/M/MV5BYjU2YTEwMTYtYjdhYS00OTE3LTgxNjctNjg1YmRkOGJjZmRlXkEyXkFqcGc@._V1_.jpg",
+    "description": "Mario embarks on a quest through the Mushroom Kingdom to rescue Princess Peach from Bowser.",
+    "features": [
+      "Video Game Adaptation",
+      "Fantasy",
+      "Comedy",
+      "Adventure"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG",
+      "Length": "1h 32m",
+      "Director": "Aaron Horvath, Michael Jelenic",
+      "Stars": "Chris Pratt, Anya Taylor-Joy, Jack Black",
+      "IMDB Rating": "7.4/10"
+    }
+  },
+  {
+    "id": "14",
+    "name": "Transformers: Rise of the Beasts",
+    "category": "Action",
+    "price": 12.49,
+    "image": "https://m.media-amazon.com/images/M/MV5BZTVkZWY5MmItYjY3OS00OWY3LTg2NWEtOWE1NmQ4NGMwZGNlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "The Autobots and Maximals team up to stop a new threat to Earth.",
+    "features": [
+      "Action",
+      "Robots",
+      "Adventure",
+      "Science Fiction"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG-13",
+      "Length": "2h 7m",
+      "Director": "Steven Caple Jr.",
+      "Stars": "Anthony Ramos, Dominique Fishback, Ron Perlman",
+      "IMDB Rating": "6.5/10"
+    }
+  },
+  {
+    "id": "15",
+    "name": "Shazam! Fury of the Gods",
+    "category": "Superhero",
+    "price": 11.49,
+    "image": "https://m.media-amazon.com/images/M/MV5BMjdlYzAwYTMtMWJlOC00OTQ5LWJhMmYtMDhjNGY4M2RhMGU4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "Billy Batson and his foster family face the wrath of the gods, who seek to reclaim their powers.",
+    "features": [
+      "Superhero",
+      "Fantasy",
+      "Action",
+      "Comedy"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG-13",
+      "Length": "2h 10m",
+      "Director": "David F. Sandberg",
+      "Stars": "Zachary Levi, Helen Mirren, Lucy Liu",
+      "IMDB Rating": "6.0/10"
+    }
+  },
+  {
+    "id": "16",
+    "name": "Blue Beetle",
+    "category": "Superhero",
+    "price": 11.99,
+    "image": "https://m.media-amazon.com/images/M/MV5BOTEyYzQzOTMtMWExNi00OWNjLTgwMDUtNzY0YjhmZDBiMTk2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "Jaime Reyes becomes the Blue Beetle after a mysterious alien scarab bonds with him.",
+    "features": [
+      "Superhero",
+      "Action",
+      "Sci-Fi",
+      "Comedy"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG-13",
+      "Length": "2h 7m",
+      "Director": "Ángel Manuel Soto",
+      "Stars": "Xolo Maridueña, Bruna Marquezine, George Lopez",
+      "IMDB Rating": "7.0/10"
+    }
+  },
+  {
+    "id": "17",
+    "name": "Fast X",
+    "category": "Action",
+    "price": 12.99,
+    "image": "https://m.media-amazon.com/images/M/MV5BYzEwZjczOTktYzU1OS00YjJlLTgyY2UtNWEzODBlN2RjZDEwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "Dom Toretto and his family are targeted by the vengeful son of a former foe, setting the stage for the most intense race of their lives.",
+    "features": [
+      "Cars",
+      "Heists",
+      "Action",
+      "Family"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG-13",
+      "Length": "2h 21m",
+      "Director": "Louis Leterrier",
+      "Stars": "Vin Diesel, Jason Momoa, Michelle Rodriguez",
+      "IMDB Rating": "6.2/10"
+    }
+  },
+  {
+    "id": "18",
+    "name": "Ant-Man and the Wasp: Quantumania",
+    "category": "Superhero",
+    "price": 11.49,
+    "image": "https://m.media-amazon.com/images/M/MV5BMThkYWY5ZjQtYjJlMS00MDFmLWFkYzEtODEzZjg5YWFmMGY4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "Scott Lang and Hope van Dyne, along with their family, explore the Quantum Realm and face a new threat in Kang the Conqueror.",
+    "features": [
+      "Superhero",
+      "Quantum Realm",
+      "Action",
+      "Adventure"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG-13",
+      "Length": "2h 5m",
+      "Director": "Peyton Reed",
+      "Stars": "Paul Rudd, Evangeline Lilly, Jonathan Majors",
+      "IMDB Rating": "6.5/10"
+    }
+  },
+  {
+    "id": "19",
+    "name": "The Little Mermaid",
+    "category": "Fantasy",
+    "price": 13.99,
+    "image": "https://m.media-amazon.com/images/M/MV5BMTM4MWY0OTEtY2E4ZC00NDdhLThkY2ItYTlmNWQxNTNkZTRmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "A live-action reimagining of the classic Disney animated film, following Ariel as she dreams of life beyond the sea.",
+    "features": [
+      "Fantasy",
+      "Musical",
+      "Adventure",
+      "Family"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG",
+      "Length": "2h 15m",
+      "Director": "Rob Marshall",
+      "Stars": "Halle Bailey, Jonah Hauer-King, Melissa McCarthy",
+      "IMDB Rating": "7.2/10"
+    }
+  },
+  {
+    "id": "20",
+    "name": "Asteroid City",
+    "category": "Comedy",
+    "price": 10.99,
+    "image": "https://m.media-amazon.com/images/M/MV5BZjY2YjYxNjEtNDJkYi00ZmJjLWIwYTEtNjEyZDgzY2M5ZDc3XkEyXkFqcGc@._V1_.jpg",
+    "description": "A fictional story of a Junior Stargazer convention that is spectacularly disrupted by world-changing events.",
+    "features": [
+      "Comedy",
+      "Science Fiction",
+      "Ensemble Cast",
+      "Quirky"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG-13",
+      "Length": "1h 45m",
+      "Director": "Wes Anderson",
+      "Stars": "Jason Schwartzman, Scarlett Johansson, Tom Hanks",
+      "IMDB Rating": "7.1/10"
+    }
+  },
+  {
+    "id": "21",
+    "name": "The Equalizer 3",
+    "category": "Action",
+    "price": 13.99,
+    "image": "https://m.media-amazon.com/images/M/MV5BMjM1ZTJhNjUtZDQxNy00MjkwLTliODgtODIxODNhYmZmMDBmXkEyXkFqcGc@._V1_.jpg",
+    "description": "Robert McCall finds himself at a crossroads, protecting an innocent family from a mafia syndicate in Italy.",
+    "features": [
+      "Action",
+      "Thriller",
+      "Vigilante",
+      "Crime"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "R",
+      "Length": "1h 49m",
+      "Director": "Antoine Fuqua",
+      "Stars": "Denzel Washington, Dakota Fanning, Eugenio Mastrandrea",
+      "IMDB Rating": "7.0/10"
+    }
+  },
+  {
+    "id": "22",
+    "name": "Scream VI",
+    "category": "Horror",
+    "price": 11.49,
+    "image": "https://m.media-amazon.com/images/M/MV5BZDZkYzk3YTEtYTQ5MS00MzQ5LTg0NjUtOTgzODA5N2EyYTQ1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "The survivors of the Ghostface killings leave Woodsboro and start a fresh chapter in New York City, only to be hunted again.",
+    "features": [
+      "Horror",
+      "Slasher",
+      "Mystery",
+      "Thriller"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "R",
+      "Length": "2h 2m",
+      "Directors": "Matt Bettinelli-Olpin, Tyler Gillett",
+      "Stars": "Melissa Barrera, Jenna Ortega, Courteney Cox",
+      "IMDB Rating": "6.7/10"
+    }
+  },
+  {
+    "id": "23",
+    "name": "The Hunger Games: The Ballad of Songbirds and Snakes",
+    "category": "Adventure",
+    "price": 13.49,
+    "image": "https://m.media-amazon.com/images/M/MV5BZDk2YjNhYzEtYzg2ZC00OWEwLWJhYzgtMGUzMWVjNDFmYzI5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "description": "In the years before he became the tyrannical President of Panem, young Coriolanus Snow mentors a female tribute in the 10th annual Hunger Games.",
+    "features": [
+      "Dystopian",
+      "Adventure",
+      "Drama",
+      "Prequel"
+    ],
+    "specs": {
+      "Year released": "2023",
+      "Rating": "PG-13",
+      "Length": "2h 37m",
+      "Director": "Francis Lawrence",
+      "Stars": "Tom Blyth, Rachel Zegler, Hunter Schafer",
+      "IMDB Rating": "7.8/10"
     }
   }
 ]
