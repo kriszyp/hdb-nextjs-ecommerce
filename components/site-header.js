@@ -28,7 +28,7 @@ export function SiteHeader() {
         
         <nav className="flex items-center space-x-6">
           <Link href="/products" className="text-sm font-medium hover:text-primary">
-            Products
+            Movies
           </Link>
 
           <DropdownMenu>

@@ -7,8 +7,8 @@ import { ControlPanel } from '@/components/control-panel';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Modern E-commerce Store',
-  description: 'Shop the latest trends with confidence',
+  title: 'Movie Streaming Store',
+  description: 'Shop the latest movies with confidence',
 };
 
 export default function RootLayout({

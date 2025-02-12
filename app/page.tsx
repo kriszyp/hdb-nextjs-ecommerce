@@ -10,18 +10,18 @@ export default async function Home() {
   const features = [
     {
       icon: <Truck className="h-6 w-6" />,
-      title: "Free Shipping",
-      description: "On orders over $100",
+      title: "No wait",
+      description: "Stream directly in your home",
     },
     {
       icon: <Star className="h-6 w-6" />,
-      title: "Premium Quality",
-      description: "Handpicked products",
+      title: "Discover More",
+      description: "Selected by relevance",
     },
     {
       icon: <TrendingUp className="h-6 w-6" />,
       title: "Best Sellers",
-      description: "Trending items",
+      description: "Trending films",
     },
   ];
 
@@ -30,19 +30,19 @@ export default async function Home() {
       {/* Hero Section */}
       <section className="relative h-[600px] w-full">
         <Image
-          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=2000"
+          src="https://wwwimage-us.pplusstatic.com/thumbnails/photos/w828-q80/cbs_page_attribute/97/71/04/7b8f925d-8bc9-4778-804f-230b9f9519d1.jpg"
           alt="Hero"
+          style={{ objectFit: 'cover' }}
           fill
-          className="object-cover brightness-50"
           priority
         />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-white">
-            <h1 className="mb-6 text-5xl font-bold">Discover Premium Products</h1>
-            <p className="mb-8 text-xl">Shop the latest trends with confidence</p>
+            <h1 className="mb-6 text-5xl font-bold">Stream All the Hit Movies</h1>
+            <p className="mb-8 text-xl">Shop the latest media with confidence</p>
             <Link href="/products">
               <Button size="lg" className="bg-white text-black hover:bg-gray-100">
-                Shop Now
+                Browse Now
               </Button>
             </Link>
           </div>
@@ -72,7 +72,7 @@ export default async function Home() {
       {/* Featured Products Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="mb-8 text-center text-3xl font-bold">Featured Products</h2>
+          <h2 className="mb-8 text-center text-3xl font-bold">Featured Movies</h2>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {featuredProducts.map((product) => (
               <Link key={product.id} href={`/products/${product.id}`}>              
@@ -101,7 +101,7 @@ export default async function Home() {
           </div>
           <div className="mt-8 text-center">
             <Link href="/products">
-              <Button size="lg">View All Products</Button>
+              <Button size="lg">View All Movies</Button>
             </Link>
           </div>
         </div>
