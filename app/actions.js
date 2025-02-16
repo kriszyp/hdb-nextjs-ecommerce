@@ -60,7 +60,7 @@ export async function customizeProductDescription(userTraits = [], productDescri
 	return response.choices[0].message.content;
 }
 
-export async function getAiRecommendations(userTraits = [], category, currentId) {
+export async function getAiRecommendations(userTraits = [], currentId) {
 	return await listProducts({
 		conditions: [{ attribute: 'id', value: currentId, comparator: 'not_equal' }]
 	})
@@ -74,7 +74,8 @@ export async function getAiRecommendations(userTraits = [], category, currentId)
 							{
 								"type": "text",
 								"text": `
-									You provide product recommendations that are related to the keywords: ${userTraits.join(', ')} from the following data: ${JSON.stringify(data)}.
+									You provide product recommendations that are related to the keywords: ${userTraits.join(', ')} 
+									from the following data: ${JSON.stringify(data)}.
 									Do not make up new products that do not exist in the data provided.
 									You respond with product recommendations in json format.
 								`
