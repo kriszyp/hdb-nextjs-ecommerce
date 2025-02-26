@@ -21,3 +21,9 @@ type Traits @table @export {
   id: ID @primaryKey
   traits: [String]
 }
+
+type PersonalizeCache @table(expiration: 3600) @export {
+  id: ID @primaryKey
+  key: String @indexed
+  content: Bytes
+}

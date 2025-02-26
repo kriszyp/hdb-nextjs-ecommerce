@@ -8,8 +8,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
-  listProducts,
   customizeProductDescription,
+  listProducts,
+  getPersonalizationCache,
   getUserTraits,
 } from '@/app/actions';
 
@@ -32,7 +33,13 @@ export default function ProductPage({ id, product }) {
         try {
           setProductDescReady(false);
 
-          // Get AI generated customized product description
+          // Check for personalization cache
+          const traitsCache = await getPersonalizationCache(traits);
+          console.log('traitsCache ', traitsCache);
+
+          // If cache doesn't exist: 
+          // get AI generated customized product description
+          // register cache
           const customDescription = await customizeProductDescription(traits, product.description);
           setCustomDescription(customDescription);
           setProductDescReady(true);
