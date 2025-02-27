@@ -128,7 +128,7 @@ export default function ProductPage({ id, product }) {
 
             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
               <Truck className="h-4 w-4" />
-              <span>Free shipping on orders over $100 cool</span>
+              <span>Free shipping on orders over $100</span>
             </div>
           </div>
 
