@@ -27,7 +27,6 @@ export async function updateUserTraits(id = "1", traits) {
 
 export async function getPersonalizationCache(traits = []) {
 	let key = createTraitsKey(traits);
-	console.log('GET key ', key);
 	const cache = [];
 	const cacheResults = await tables.PersonalizeCache.search({
 		conditions: [{ attribute: 'key', value: key, comparator: 'equals' }]
