@@ -27,8 +27,24 @@ export async function updateUserTraits(id = "1", traits) {
 
 export async function getPersonalizationCache(traits = []) {
 	let key = createTraitsKey(traits);
-	console.log('key ', key);
-	return tables.PersonalizeCache.get(key);
+	console.log('GET key ', key);
+	const cache = [];
+	const cacheResults = await tables.PersonalizeCache.search({
+		conditions: [{ attribute: 'key', value: key, comparator: 'equals' }]
+	});
+	for await (const result of cacheResults) {
+		cache.push(result);
+	}
+	return cache;
+}
+
+export async function addPersonalizationCache(traits, content){
+	let key = createTraitsKey(traits);
+	await tables.PersonalizeCache.create({
+		key: key,
+		content: content
+	});
+	return 'successfully added personalization cache';
 }
 
 // Algolia Search Server Actions

@@ -10,6 +10,7 @@ import { notFound } from "next/navigation";
 import {
   customizeProductDescription,
   listProducts,
+  addPersonalizationCache,
   getPersonalizationCache,
   getUserTraits,
 } from '@/app/actions';
@@ -35,14 +36,22 @@ export default function ProductPage({ id, product }) {
 
           // Check for personalization cache
           const traitsCache = await getPersonalizationCache(traits);
-          console.log('traitsCache ', traitsCache);
+          // If it exists, set in state
+          if (traitsCache.length) {
+            setCustomDescription(traitsCache[0].content);
+            setProductDescReady(true);
+          }
 
-          // If cache doesn't exist: 
-          // get AI generated customized product description
-          // register cache
-          const customDescription = await customizeProductDescription(traits, product.description);
-          setCustomDescription(customDescription);
-          setProductDescReady(true);
+          // If no cache: get OpenAI customized product description && register cache
+          if (!traitsCache || !traitsCache.length) {
+            const customDescription = await customizeProductDescription(traits, product.description);
+
+            // Set in cache
+            addPersonalizationCache(traits, customDescription);
+
+            setCustomDescription(customDescription);
+            setProductDescReady(true);
+          }
 
         } catch (err) {
           console.error('Error fetching data:', err);
@@ -119,7 +128,7 @@ export default function ProductPage({ id, product }) {
 
             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
               <Truck className="h-4 w-4" />
-              <span>Free shipping on orders over $100</span>
+              <span>Free shipping on orders over $100 cool</span>
             </div>
           </div>
 
