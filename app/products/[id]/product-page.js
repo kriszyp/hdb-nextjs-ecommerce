@@ -7,6 +7,7 @@ import { ShoppingBag, Star, Truck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { createTraitsKey } from "@/lib/utils";
 import {
   customizeProductDescription,
   listProducts,
@@ -14,6 +15,7 @@ import {
   getPersonalizationCache,
   getUserTraits,
 } from '@/app/actions';
+const { PersonalizeCache } = tables;
 
 export default function ProductPage({ id, product }) {
   if (!product) notFound();
@@ -33,25 +35,9 @@ export default function ProductPage({ id, product }) {
       if (Array.isArray(traits) && traits.length) {
         try {
           setProductDescReady(false);
-
-          // Check for personalization cache
-          const traitsCache = await getPersonalizationCache(traits);
-          // If it exists, set in state
-          if (traitsCache.length) {
-            setCustomDescription(traitsCache[0].content);
-            setProductDescReady(true);
-          }
-
-          // If no cache: get OpenAI customized product description && register cache
-          if (!traitsCache || !traitsCache.length) {
-            const customDescription = await customizeProductDescription(traits, product.description);
-
-            // Set in cache
-            addPersonalizationCache(traits, customDescription);
-
-            setCustomDescription(customDescription);
-            setProductDescReady(true);
-          }
+          const personalized = await PersonalizeCache.get(createTraitsKey(id, traits));
+          setCustomDescription(personalized.content);
+          setProductDescReady(true);
 
         } catch (err) {
           console.error('Error fetching data:', err);

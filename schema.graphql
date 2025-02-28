@@ -23,7 +23,6 @@ type Traits @table @export {
 }
 
 type PersonalizeCache @table @export {
-  id: ID @primaryKey
-  key: String @indexed
+  key: ID @primaryKey
   content: String
 }
