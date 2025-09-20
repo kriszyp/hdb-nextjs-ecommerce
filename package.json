@@ -8,6 +8,9 @@
     "start": "harperdb-nextjs start",
     "lint": "next lint"
   },
+  "devEngines": {
+    "packageManager": "pnpm"
+  },
   "dependencies": {
     "@harperdb/nextjs": "^1.0.2",
     "@hookform/resolvers": "^3.9.0",
