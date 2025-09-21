@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "devEngines": {
-    "packageManager": "pnpm"
+    "packageManager": {
+      "name": "pnpm"
+    }
   },
   "dependencies": {
     "@harperdb/nextjs": "^1.0.2",
